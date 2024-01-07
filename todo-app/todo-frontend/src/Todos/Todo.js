@@ -1,35 +1,36 @@
 import React from 'react'
 
-const Todo = ({onClickDelete, onClickComplete, todo}) => {
+const Todo = ({ todo, onClickDelete, onClickComplete }) => {
+
     const doneInfo = (
         <>
-        <span>This todo is done</span>
-        <span>
-            <button onClick={onClickDelete(todo)}> Delete </button>
-        </span>
+          <span>This todo is done</span>
+          <span>
+            <button onClick={onClickDelete()}> Delete </button>
+          </span>
         </>
-    )
+      )
 
-    const notDoneInfo = (
+      const notDoneInfo = (
         <>
-        <span>
+          <span>
             This todo is not done
-        </span>
-        <span>
-            <button onClick={onClickDelete(todo)}> Delete </button>
-            <button onClick={onClickComplete(todo)}> Set as done </button>
-        </span>
+          </span>
+          <span>
+            <button onClick={onClickDelete()}> Delete </button>
+            <button onClick={onClickComplete()}> Set as done </button>
+          </span>
         </>
-    )
+      )
+
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '70%', margin: 'auto' }}>
-        <span>
+          <span>
             {todo.text} 
-        </span>
-        {todo.done ? doneInfo : notDoneInfo}
+          </span>
+          {todo.done ? doneInfo : notDoneInfo}
         </div>
-    )
-
+      )
 }
 
-export default Todo;
+export default Todo
