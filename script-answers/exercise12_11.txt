@@ -1,0 +1,779 @@
+Script started on 2024-01-07 16:24:27+01:00 [TERM="xterm-256color" TTY="/dev/pts/7" COLUMNS="120" LINES="30"]
+]0;ubuntu@DESKTOP-EPCMUMJ: ~/fullstackopen-part12-exercises/todo-app[01;32mubuntu@DESKTOP-EPCMUMJ[00m:[01;34m~/fullstackopen-part12-exercises/todo-app[00m$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                     NAMES
+9eabe7762a60   mongo     "docker-entrypoint.s…"   22 minutes ago   Up 22 minutes   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+9dfa8a02fe81   redis     "docker-entrypoint.s…"   22 minutes ago   Up 22 minutes   0.0.0.0:6379->6379/tcp    todo-backend-redis-1
+]0;ubuntu@DESKTOP-EPCMUMJ: ~/fullstackopen-part12-exercises/todo-app[01;32mubuntu@DESKTOP-EPCMUMJ[00m:[01;34m~/fullstackopen-part12-exercises/todo-app[00m$ docer exec[K[K[K[K[K[K[K[K[K[Kdocker exec todo-backend-redis-1 edi[K[K[Kb[K/bin/bash
+]0;ubuntu@DESKTOP-EPCMUMJ: ~/fullstackopen-part12-exercises/todo-app[01;32mubuntu@DESKTOP-EPCMUMJ[00m:[01;34m~/fullstackopen-part12-exercises/todo-app[00m$ docker exec todo-backend-redis-1 /bin/bash[1@-[1@i[1@t[1@ 
+unknown shorthand flag: 'i' in -it
+See 'docker --help'.
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Common Commands:
+  run         Create and run a new container from an image
+  exec        Execute a command in a running container
+  ps          List containers
+  build       Build an image from a Dockerfile
+  pull        Download an image from a registry
+  push        Upload an image to a registry
+  images      List images
+  login       Log in to a registry
+  logout      Log out from a registry
+  search      Search Docker Hub for images
+  version     Show the Docker version information
+  info        Display system-wide information
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.12.0-desktop.2)
+  compose*    Docker Compose (Docker Inc., v2.23.3-desktop.2)
+  container   Manage containers
+  context     Manage contexts
+  dev*        Docker Dev Environments (Docker Inc., v0.1.0)
+  extension*  Manages Docker extensions (Docker Inc., v0.2.21)
+  feedback*   Provide feedback, right in your terminal! (Docker Inc., 0.1)
+  image       Manage images
+  init*       Creates Docker-related starter files for your project (Docker Inc., v0.1.0-beta.10)
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  plugin      Manage plugins
+  sbom*       View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc., 0.6.0)
+  scan*       Docker Scan (Docker Inc., v0.26.0)
+  scout*      Docker Scout (Docker Inc., v1.2.0)
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Swarm Commands:
+  swarm       Manage Swarm
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Global Options:
+      --config string      Location of client config files (default "/home/ubuntu/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket to connect to
+  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/ubuntu/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/ubuntu/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/ubuntu/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Run 'docker COMMAND --help' for more information on a command.
+
+For more help on how to use Docker, head to https://docs.docker.com/go/guides/
+
+]0;ubuntu@DESKTOP-EPCMUMJ: ~/fullstackopen-part12-exercises/todo-app[01;32mubuntu@DESKTOP-EPCMUMJ[00m:[01;34m~/fullstackopen-part12-exercises/todo-app[00m$ history
+    1  code .
+    2  git
+    3  ls
+    4  git clone https://github.com/fullstack-hy2020/part12-containers-applications.git
+    5  ls
+    6  mv part12-containers-applications/ fullstackopen-part12-exercises
+    7  ls
+    8  cd fullstackopen-part12-exercises/
+    9  code .
+   10  cd ~
+   11  curl http://helsinki.fi
+   12  curl http://helsinki.fi >> exercise12.1.txt
+   13  ls
+   14  nano exercise12.1.txt 
+   15  mv exercise12.1.txt exercise12_1.txt
+   16  nano exercise12_1.txt 
+   17  mv exercise12_1.txt fullstackopen-part12-exercises/script-answers/exercise12_1.txt
+   18  echo 'hello'
+   19  exit
+   20  docker run -it ubuntu bash
+   21  sudo docker run -it ubuntu bash
+   22  exit
+   23  sudo docker start -i zealous_mcnulty
+   24  exit
+   25  sudo docker start -i zealous_mcnulty
+   26  exit
+   27  cd fullstackopen-part12-exercises/script-answers/
+   28  sudo docker container cp ./index.js hello-node:/usr/src/app/index.js
+   29  sudo docker container list
+   30  sudo docker container list -a
+   31  sudo docker stop blissful_galois
+   32  sudo docker container list -a
+   33  sudo docker stop blissful_galois
+   34  sudo docker container list -a
+   35  sudo docker kill adoring_dirac
+   36  sudo docker container list -a
+   37  docker -v
+   38  docker container run hello-world
+   39  sudo docker container run hello-world
+   40  script
+   41  ls
+   42  nano typescript 
+   43  rm typescript 
+   44  ls
+   45  cd fullstackopen-part12-exercises/
+   46  cd script-answers/
+   47  ls
+   48  script
+   49  ls
+   50  nano typescript 
+   51  mv typescript exercise12_2.txt
+   52  ls
+   53  cd ..
+   54  code .
+   55  docker container run --help
+   56  docker container run --rm ubuntu ls
+   57  sudo docker container run --rm ubuntu ls
+   58  container ls -a
+   59  sudo docker container ls -a
+   60  sudo docker ps -a
+   61  sudo docker start zealous_mcnulty
+   62  sudo docker container ls -a
+   63  sudo docker kill zealous_mcnulty
+   64  sudo docker container ls -a
+   65  sudo docker start -i zealous_mcnulty
+   66  cd script-answers/
+   67  script
+   68  mv typescript exercise12_3.txt
+   69  ls
+   70  script
+   71  mv typescript exercise12_4.txt
+   72  sudo docker commit zealous_mcnulty hello-node-world
+   73  sudo docker image ls
+   74  sudo docker run -it hello-node-world bash
+   75  sudo docker container rm zealous_mcnulty
+   76  nano index.js
+   77  sudo docker container run -it --name hello-node node:16 bash
+   78  ls
+   79  nano Dockerfile
+   80  sudo docker build -t fs-hello-world .
+   81  sudo docker run fs-hello-world
+   82  sudo docker image ls
+   83  ls
+   84  cd ..
+   85  mkdir playground
+   86  cd playground/
+   87  npx express-generator
+   88  sudo apt udpdate
+   89  sudo apt update
+   90  sudo apt-get install curl
+   91  curl -sL https://deb.nodesource.com/setup_16.x | bash
+   92  sudo curl -sL https://deb.nodesource.com/setup_16.x | bash
+   93  node
+   94  sudo apt install nodejs
+   95  node console.log('hello world')
+   96  node 1+1
+   97  node
+   98  npx express-generator
+   99  npx
+  100  node -v
+  101  npm install -g express-generator
+  102  sudo apt update
+  103  npx express-generator
+  104  npm install -g express-generator
+  105  cd ..
+  106  ls
+  107  cd fullstackopen-part12-exercises/
+  108  ls
+  109  cd todo-app/
+  110  ls
+  111  cd todo-backend/
+  112  ls
+  113  npm start
+  114  nano Dockerfile
+  115  ls
+  116  nano .dockerignore
+  117  sudo docker build -t todo-backend-1 .
+  118  sudo docker run -p 3000:3000 todo-backend-1
+  119  nano docker-compose.yml
+  120  sudo docker compose up
+  121  ls
+  122  cd big_data_tfm/
+  123  ls
+  124  cd ingestion_scrapper
+  125  ls
+  126  cd ingestion_scrapper/
+  127  ls
+  128  nano ingestion_script.sh
+  129  cd --
+  130  cd ..
+  131  cd ~
+  132  cd big_data_tfm/ingestion_scrapper/
+  133  cd ingestion_scrapper/
+  134  nano ingestion_script.sh 
+  135  cd  ..
+  136  ls
+  137  nano Dockerfile 
+  138  cd ingestion_scrapper/
+  139  ls
+  140  cd spiders/
+  141  ls
+  142  sudo nano pisos_spider.py 
+  143  docker run -it --rm -v ingestion-logs:/logs ubuntu /bin/bash
+  144  ls
+  145  node
+  146  npm --version
+  147  npm -version
+  148  nodej
+  149  npm 
+  150  npx
+  151  npr
+  152  sudo npm
+  153  npx
+  154  sudo npx
+  155  ls
+  156  git clone https://github.com/dpuertamartos/big_data_tfm.git
+  157  ls
+  158  cd big_data_tfm/
+  159  ls
+  160  cd ingestion_scrapper/
+  161  ls
+  162  nano Dockerfile
+  163  sudo docker build -t scraper .
+  164  ls
+  165  nano Dockerfile 
+  166  sudo docker build -t scraper .
+  167  sudo docker container list -a
+  168  sudo docker container list 
+  169  docker run --name my-scraper scraper
+  170  docker run -it --entrypoint /bin/bash scraper
+  171  docker container list -a
+  172  sudo docker build -t scraper .
+  173  docker run --name my-scraper scraper
+  174  docker container list -a
+  175  docker stop my-scraper
+  176  docker container list -a
+  177  docker remove my-scraper
+  178  docker container list -a
+  179  docker run --name my-scraper scraper
+  180  docker run -it --entrypoint /bin/bash scraper
+  181  docker remove my-scraper
+  182  sudo docker build -t scraper .
+  183  docker run --name my-scraper scraper
+  184  docker remove my-scraper
+  185  ls
+  186  nano Dockerfile 
+  187  sudo docker build -t scraper .
+  188  docker run --name my-scraper scraper
+  189  docker container list -a
+  190  docker run --name my-scraper scraper
+  191  docker run my-scraper
+  192  docker start -ai my-scraper
+  193  docker volume create ingestion-logs
+  194  docker remove my-scraper
+  195  docker run --name my-scraper -v ingestion-logs:/usr/src/app/ingestion_logs scraper
+  196  docker volume inspect ingestion-logs 
+  197  cd /var/lib/docker/volumes/ingestion-logs/
+  198  docker run -it --rm -v ingestion-logs:/logs ubuntu /bin/bash
+  199  docker pull mongo
+  200  docker run --name mongodb-container -d -p 27017:27017 mongo
+  201  docker container list -a
+  202  docker ps -a
+  203  docker remove my-scraper
+  204  sudo docker build -t scraper .
+  205  docker run --name my-scraper -v ingestion-logs:/usr/src/app/ingestion_logs scraper
+  206  docker run -it --rm -v ingestion-logs:/logs ubuntu /bin/bash
+  207  docker run --name my-scraper -v ingestion-logs:/usr/src/app/ingestion_logs --network bridge scraper
+  208  docker remove my-scraper
+  209  docker run --name my-scraper -v ingestion-logs:/usr/src/app/ingestion_logs --network bridge scraper
+  210  docker remove my-scraper
+  211  docker ps -a
+  212  docker remove mongodb-container
+  213  docker stop mongodb-container
+  214  docker ps -a
+  215  docker remove mongo-db-container
+  216  docker remove mongodb-container
+  217  docker network create custom-network
+  218  docker run --name mongodb-container --network my-custom-network -d -p 27017:27017 mongo
+  219  docker run --name mongodb-container --network custom-network -d -p 27017:27017 mongo
+  220  docker remove mongodb-container
+  221  docker run --name mongodb-container --network custom-network -d -p 27017:27017 mongo
+  222  docker run --name my-scraper -v ingestion-logs:/usr/src/app/ingestion_logs --network custom-network scraper
+  223  docker ps -a
+  224  docker ps -a
+  225  docker stop my-scraper
+  226  docker ps -a
+  227  cd big_data_tfm/
+  228  ls
+  229  cd ingestion_scrapper/
+  230  ls
+  231  sudo rm -r big_data_tfm/
+  232  git clone https://github.com/dpuertamartos/big_data_tfm.git
+  233  cd big_data_tfm/
+  234  git checkout docker_deploy
+  235  ls
+  236  sudo docker ps -a
+  237  docker ps -a
+  238  docker remove my-scraper
+  239  history
+  240  docker run --name mongodb-container --network custom-network -d -p 27017:27017 mongo
+  241  ps -a
+  242  docker ps -a
+  243  docker start mongodb-container
+  244  cd ingestion_scrapper/
+  245  ls
+  246  docker build -t scraper .
+  247  docker volume create logs
+  248  docker ps -a
+  249  cd ..
+  250  git pull
+  251  git checkout docker_deploy
+  252  cd ingestion_scrapper/
+  253  docker build -t scraper
+  254  docker build -t scraper .
+  255  cd  ~
+  256  mkdir logs/ingestion_logs
+  257  mkdir ./logs/ingestion_logs
+  258  cd big_data_tfm/
+  259  git pull
+  260  cd ingestion_scrapper/
+  261  docker build -t scraper .
+  262  `docker run --rm --name my-scraper -v logs:/usr/src/app/logs -e SCRIPT_NAME=ingestion_script.sh -e UPDATE_MODE=False --network custom-network scraper`
+  263  docker run --rm --name my-scraper -v logs:/usr/src/app/logs -e SCRIPT_NAME=ingestion_script.sh -e UPDATE_MODE=False --network custom-network scraper
+  264  docker ps -a
+  265  docker stop my-scraper
+  266  docker ps -a
+  267  docker inspect mongodb-container
+  268  `docker run --rm --name my-scraper -v logs:/usr/src/app/logs -e SCRIPT_NAME=ad_up_checking_script.sh --network custom-network scraper`
+  269  `docker run --rm --name my-scraper -v logs:/usr/src/app/logs -e SCRIPT_NAME=ingestion_script.sh --network custom-network scraper`
+  270  docker ps -a
+  271  cd ../ETL/
+  272  Firts run:
+  273  `docker run --name mongodb-container --network custom-network -d -p 27017:27017 mongo`
+  274  Later runs:
+  275  docker build -t etl-container .
+  276  cd ..
+  277  git pull
+  278  cd ETL/
+  279  docker build -t etl-container .
+  280  docker volume create sqlite-db-volume
+  281  docker run --rm --name my_etl -v logs:/usr/src/app/logs -v sqlite-db-volume:/usr/src/app/database -e SQL_URI=/database/pisos.db -e SCRIPT_NAME=transformation_script.sh --network custom-network etl-container
+  282  `docker run --rm --name my_etl -v logs:/usr/src/app/logs -v sqlite-db-volume:/usr/src/app/database -e SQL_URI=/usr/src/app/database/pisos.db -e SCRIPT_NAME=transformation_script.sh --network custom-network etl-container`
+  283  `docker run --rm --name my_aggregation -v logs:/usr/src/app/logs -v sqlite-db-volume:/usr/src/app/database -e SQL_URI=/usr/src/app/database/pisos.db -e SCRIPT_NAME=aggregation_script.sh --network custom-network etl-container`
+  284  docker volume remove sqlite-db-volume
+  285  docker volume create sqlite-db-volume
+  286  docker volume remove logs
+  287  docker build -t etl-container .
+  288  cd ..
+  289  git pull
+  290  cd ETL/
+  291  docker build -t etl-container .
+  292  `docker run --rm --name my_etl -v logs:/usr/src/app/logs -v sqlite-db-volume:/usr/src/app/database -e SCRIPT_NAME=transformation_script.sh --network custom-network etl-container`
+  293  `docker run --rm --name my_aggregation -v logs:/usr/src/app/logs -v sqlite-db-volume:/usr/src/app/database -e SCRIPT_NAME=aggregation_script.sh --network custom-network etl-container`
+  294  cd ..
+  295  git pull
+  296  docker volume create models
+  297  cd data_analysis/
+  298  docker build -t ml-container .
+  299  `docker run --rm --name my_ml -v models:/usr/src/app/models -v logs:/usr/src/app/logs -v sqlite-db-volume:/usr/src/app/database -e SCRIPT_NAME=train.sh ml-container`
+  300  cd ..
+  301  git pull
+  302  docker build -t ml-container .
+  303  cd data_analysis/
+  304  docker build -t ml-container .
+  305  `docker run --rm --name my_ml -v models:/usr/src/app/models -v logs:/usr/src/app/logs -v sqlite-db-volume:/usr/src/app/database -e SCRIPT_NAME=train.sh ml-container`
+  306  `docker run --rm --name my_ml -v models:/usr/src/app/models -v logs:/usr/src/app/logs -v sqlite-db-volume:/usr/src/app/database -e SCRIPT_NAME=predict.sh ml-container`
+  307  history
+  308  docker run -it --rm -v logs:/logs ubuntu /bin/bash
+  309  docker run -it --rm -v models:/models ubuntu /bin/bash
+  310  docker run -it --rm -v logs:/logs ubuntu /bin/bash
+  311  docker stop my-scraper
+  312  cd big_data_tfm/
+  313  git pull
+  314  cd airflow/
+  315  docker-compose run webserver airflow db init
+  316  docker volume create airflow-logs
+  317  docker volume create airflow-data
+  318  docker-compose run webserver airflow db init
+  319  cd ..
+  320  git pull
+  321  cd airflow/
+  322  docker-compose run webserver airflow db init
+  323  docker-compose run webserver airflow users create     --username admin     --firstname FIRST_NAME     --lastname LAST_NAME     --role Admin     --email admin@example.org
+  324  docker-compose up -d
+  325  docker-compose logs webserver
+  326  docker-compose run webserver airflow db init
+  327  docker-compose down
+  328  docker-compose up -d
+  329  docker-compose logs webserver
+  330  docker-compose down
+  331  docker volume rm airflow-logs airflow-data
+  332  cd ..
+  333  git pull
+  334  cd airflow/
+  335  docker-compose run webserver airflow db init
+  336  docker-compose run webserver airflow users create     --username admin     --firstname FIRST_NAME     --lastname LAST_NAME     --role Admin     --email admin@example.org     --password your_password
+  337  docker-compose up -d
+  338  docker-compose down
+  339  docker-compose up -d
+  340  docker-compose down
+  341  docker ps -a
+  342  docker container prune
+  343  docker ps -a
+  344  cd ..
+  345  git pull
+  346  docker volume remove airflow-logs airflow-data
+  347  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  348  docker-compose exec airflow_webserver airflow db init
+  349  ps -a
+  350  docker ps -a
+  351  docker compose down
+  352  docker-compose run webserver airflow db init
+  353  docker-compose run airflow_webserver airflow db init
+  354  docker ps -a
+  355  docker-compose run airflow_webserver airflow users create     --username admin     --firstname FIRST_NAME     --lastname LAST_NAME     --role Admin     --email admin@example.org     --password admin
+  356  docker ps -a
+  357  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  358  ps -a
+  359  docker ps -a
+  360  docker-compose build scraper etl data_analysis
+  361  docker ps -a
+  362  docker compose down
+  363  docker ps -a
+  364  docker-compose run --rm airflow_webserver airflow db init
+  365  docker-compose run --rm airflow_webserver airflow users create     --username admin     --firstname FIRST_NAME     --lastname LAST_NAME     --role Admin     --email admin@example.org     --password admin
+  366  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  367  docker-compose build scraper etl data_analysis
+  368  docker ps -a
+  369  docker-compose run --rm --name my-scraper -e SCRIPT_NAME=ingestion_script.sh scraper
+  370  docker-compose run --rm -e SCRIPT_NAME=ingestion_script.sh scraper
+  371  `docker-compose run --rm -e SCRIPT_NAME=ad_up_checking_script.sh scraper`
+  372  docker-compose run --rm -e SCRIPT_NAME=transformation_script.sh etl-container
+  373  `docker-compose run --rm -e SCRIPT_NAME=transformation_script.sh etl`
+  374  docker-compose run --rm -e SCRIPT_NAME=aggregation_script.sh etl
+  375  `docker-compose run --rm -e SCRIPT_NAME=train.sh data_analysis`
+  376  `docker-compose run --rm -e SCRIPT_NAME=prediction.sh data_analysis`
+  377  `docker-compose run --rm -e SCRIPT_NAME=predict.sh data_analysis`
+  378  docker compose down
+  379  git pull
+  380  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  381  docker ps -a
+  382  docker-compose down
+  383  git pull
+  384  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  385  ls /var/run/docker.sock
+  386  docker-compose down
+  387  git pull
+  388  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  389  sudo chmod 666 /var/run/docker.sock
+  390  ls -l /var/run/docker.sock
+  391  docker-compose down
+  392  git pull
+  393  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  394  docker ps -a
+  395  docker stop sweet_kilby
+  396  docker ps-a
+  397  docker ps -a
+  398  docker-compose down
+  399  git pull
+  400  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  401  docker-compose down
+  402  git pull
+  403  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  404  docker volume ls
+  405  docker-compose down
+  406  git pull
+  407  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  408  docker-compose down
+  409  git pull
+  410  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  411  docker-compose down
+  412  git pull
+  413  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  414  docker volume ls
+  415  docker-compose down
+  416  git pull
+  417  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  418  docker-compose down
+  419  git pull
+  420  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  421  docker-compose down
+  422  git pull
+  423  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  424  docker ps -a
+  425  docker-compose down
+  426  git pull
+  427  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  428  docker ps -a
+  429  docker-compose down
+  430  docker-compose up -d mongodb
+  431  cd ..
+  432  ls
+  433  cd ..
+  434  ls
+  435  cd ..
+  436  ls
+  437  cd ..
+  438  cd usr/
+  439  ls
+  440  cd ..
+  441  cd ~
+  442  ls
+  443  docker ps -a
+  444  docker cp 20231209_modified/ mongodb-container:/tmp/bkup
+  445  docker exec -it mongodb-container mongorestore --archive=/tmp/bkup
+  446  docker exec -it mongodb-container ls /tmp/bkup
+  447  docker exec -it mongodb-container mongorestore /tmp/bkup
+  448  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  449  cd big_data_tfm/
+  450  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  451  docker-compose down
+  452  git pull
+  453  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  454  docker-compose down
+  455  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  456  docker ps  -a
+  457  docker-compose down
+  458  cd big_data_tfm/
+  459  docker-compose stop my-scraper
+  460  docker stop my-scraper
+  461  docker ps -a
+  462  docker stop 2a477cbea132
+  463  cd big_data_tfm/
+  464  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  465  docker ps -a
+  466  docker container remove stoic_noether
+  467  docker ps -a
+  468  ls -la /var/run/docker.sock
+  469  sudo chmod 666 /var/run/docker.sock
+  470  ls -la /var/run/docker.sock
+  471  docker-compose down
+  472  git pull
+  473  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  474  docker-compose down
+  475  cd airflow/dags
+  476  nano mongo_backup_dag.py 
+  477  cd ..
+  478  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  479  docker-compose down
+  480  git pull
+  481  cd airflow/dags
+  482  nano mongo_backup_dag.py 
+  483  cd ..
+  484  docker-compose up -d mongodb airflow_webserver airflow_scheduler
+  485  docker-compose down
+  486  cd airflow/dags
+  487  nano mongo_backup_dag.py 
+  488  cd ..
+  489  git pull
+  490  docker volume ls
+  491  docker volume create big_data_tfm_mongodb-data
+  492  docker run --rm -v big_data_tfm_mongodb-data:/data -v /home/ubuntu:/backup ubuntu tar xzvf /backup/mongodb-volume-backup.tar.gz -C /data
+  493  docker-compose up -d mongodb
+  494  docker-compose down
+  495  docker-compose up -d mongodb
+  496  docker-compose down
+  497  docker volume remove big_data_tfm_mongodb-data 
+  498  docker-compose up -d mongodb
+  499  docker run --rm -v big_data_tfm_mongodb-data:/data -v /home/ubuntu:/backup ubuntu tar xzvf /backup/mongodb-volume-backup.tar.gz -C /data
+  500  docker-compose up -d mongodb
+  501  docker-compose down
+  502  cd ..
+  503  ls
+  504  rm mongodb-volume-backup.tar.gz 
+  505  rm 20231209_modified/
+  506  rm -r 20231209_modified/
+  507  docker ps -a
+  508  ls
+  509  cd fullstackopen-part12-exercises/
+  510  code .
+  511  curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+  512  ls
+  513  cd /tmp/
+  514  ls
+  515  sudo bash /tmp/nodesource_setup.sh 
+  516  sudo apt install nodejs
+  517  node -v
+  518  cd ..
+  519  ls
+  520  cd home/
+  521  ls
+  522  cd ubuntu/
+  523  ls
+  524  npx express-generator
+  525  ls
+  526  npm uninstall express-generator
+  527  ls
+  528  rm app.js 
+  529  rm -r bin/
+  530  rm -r node_modules/
+  531  rm -r public/
+  532  rm -r views/
+  533  rm -r routes/
+  534  rm package.json 
+  535  rm package-lock.json 
+  536  ls
+  537  mkdir basic_express_server
+  538  cd basic_express_server/
+  539  npx express-generator
+  540  ls
+  541  npm install
+  542  DEBUG=playground:* npm start
+  543  code .
+  544  docker build -t express-server .
+  545  docker run -p 3123:3000 express-server
+  546  docker build -t express-server . && docker run -p 3123:3000 express-server
+  547  docker compose -f docker-compose.dev.yml up
+  548  cd todo-app/
+  549  cd todo-backend/
+  550  docker compose -f docker-compose.dev.yml up
+  551  docker compose -f docker-compose.dev.yml up -d
+  552  docker compose down
+  553  docker ps -a
+  554  docker container remove 154
+  555  docker container stop 154 && docker container remove 154
+  556  docker compose -f docker-compose.dev.yml up
+  557  docker compose -f docker-compose.dev.yml up -d
+  558  npm install
+  559  npm run dev
+  560  docker exec -it todo-backend-mongo-1 bash
+  561  exit
+  562  docker ps -a
+  563  docker kill modest_mestorf
+  564  docker ps -a
+  565  docker kill 5e
+  566  ls
+  567  cd fullstackopen-part12-exercises/
+  568  ls
+  569  cd todo-app/todo-backend/
+  570  npm install
+  571  npm run dev
+  572  docker ps -a
+  573  docker stop 6c && docker remove 6c
+  574  docker ps -a
+  575  docker compose -f docker-compose.dev.yml up -d
+  576  npm run dev
+  577  docker compose -f docker-compose.dev.yml down --volumes
+  578  docker compose -f docker-compose.dev.yml up -d
+  579  npm run dev
+  580  MONGO_URL=mongodb://root:example@localhost:3456/the_database npm run dev
+  581  $ MONGO_URL=mongodb://the_username:the_password@localhost:3456/the_database npm run dev
+  582  MONGO_URL=mongodb://the_username:the_password@localhost:3456/the_database npm run dev
+  583  docker container run -d nginx
+  584  docker ps -a
+  585  docker container stop f293
+  586  docker container rm f293
+  587  docker container run -d -p 8080:80 nginx
+  588  docker ps -a
+  589  docker exec -it frosty_tharp bash
+  590  ps -a
+  591  docker ps -a
+  592  docker container stop 73 && docker container remove 73
+  593  cd ..
+  594  script
+  595  ls
+  596  mv typescript ./script-answers/exercise12_8.txt
+  597  cd todo-app/
+  598  cd todo-backend/
+  599  npm run dev
+  600  docker compose up -d
+  601  docker compose down
+  602  docker compose up -f docker-compose.dev.yml -d
+  603  docker compose -f docker-compose.dev.yml up
+  604  docker compose -f docker-compose.dev.yml up -d
+  605  npm run dev
+  606  $ REDIS_URL=redis://localhost:6379 MONGO_URL=mongodb://the_username:the_password@localhost:3456/the_database npm run dev
+  607  REDIS_URL=redis://localhost:6379 MONGO_URL=mongodb://the_username:the_password@localhost:3456/the_database npm run dev
+  608  docker ps -a
+  609  cd ..
+  610  ls
+  611  cd playground/
+  612  ls
+  613  npx create-react-app hello-front
+  614  ñs
+  615  ls
+  616  cd hello
+  617  cd hello-front/
+  618  npm run build
+  619  ls
+  620  code .
+  621  docker build -t hello-front .
+  622  docker run -it hello-front bash
+  623  docker build -t hello-front .
+  624  docker run -p 5001:3000 hello-front
+  625  docker build -t hello-front .
+  626  docker run -p 8000:80 hello-front
+  627  cd /home/ubuntu/fullstackopen-part12-exercises/
+  628  cd todo-app/todo-frontend/
+  629  npm run dev
+  630  npm start
+  631  REACT_APP_BACKEND_URL=localhost:3001 npm start
+  632  REACT_APP_BACKEND_URL=http://localhost:3001 npm start
+  633  docker built -t todo-frontend .
+  634  docker build -t todo-frontend .
+  635  docker image list
+  636  docker run todo-frontend
+  637  docker run todo-frontend -p 8000:80
+  638  docker run todo-frontend --p 8000:80
+  639  docker run --p 8003:80 todo-frontend
+  640  docker run -p 8003:80 todo-frontend
+  641  docker ps -a
+  642  ls
+  643  cd fullstackopen-part12-exercises/todo-app/todo-backend/
+  644  npm run dev
+  645  docker compose -f docker-compose.dev.yml up -d
+  646  docker compose down
+  647  docker compose down -f docker-compose.dev.yml 
+  648  docker compose -f docker-compose.dev.yml down
+  649  MONGO_URL=mongodb://the_username:the_password@localhost:3456/the_database npm run dev
+  650  PORT=3001 MONGO_URL=mongodb://the_username:the_password@localhost:3456/the_database npm run dev
+  651  docker compose -f docker-compose.dev.yml up
+  652  docker compose -f docker-compose.dev.yml up -d
+  653  PORT=3001 MONGO_URL=mongodb://the_username:the_password@localhost:3456/the_database npm run dev
+  654  docker ps -a
+  655  docker exec todo-backend-redis-1 /bin/bash
+  656  docker -it exec todo-backend-redis-1 /bin/bash
+  657  history
+]0;ubuntu@DESKTOP-EPCMUMJ: ~/fullstackopen-part12-exercises/todo-app[01;32mubuntu@DESKTOP-EPCMUMJ[00m:[01;34m~/fullstackopen-part12-exercises/todo-app[00m$ historydocker -it exec todo-backend-redis-1 /bin/bash[1P[1P[1P[1P[C[C[C[C[C[C[1@ [1@-[1@i[1@t[C[1@ [1P
+[?2004hroot@9dfa8a02fe81:/data# redis-cli
+[?2004l127.0.0.1:6379> [0K127.0.0.1:6379> G[17C[0K127.0.0.1:6379> GE[18C[0K127.0.0.1:6379> GET[19C[0K127.0.0.1:6379> GET [0;90;49mkey[0m[20C[0K127.0.0.1:6379> GET a[0;90;49m key[0m[21C[0K127.0.0.1:6379> GET [0;90;49mkey[0m[20C[0K127.0.0.1:6379> GET a[0;90;49m key[0m[21C[0K127.0.0.1:6379> GET ad[0;90;49m key[0m[22C[0K127.0.0.1:6379> GET add[0;90;49m key[0m[23C[0K127.0.0.1:6379> GET adde[0;90;49m key[0m[24C[0K127.0.0.1:6379> GET added[0;90;49m key[0m[25C[0K127.0.0.1:6379> GET added_[0;90;49m key[0m[26C[0K127.0.0.1:6379> GET added_t[0;90;49m key[0m[27C[0K127.0.0.1:6379> GET added_to[0;90;49m key[0m[28C[0K127.0.0.1:6379> GET added_tod[0;90;49m key[0m[29C[0K127.0.0.1:6379> GET added_todo[0;90;49m key[0m[30C[0K127.0.0.1:6379> GET added_todos[0;90;49m key[0m[31C[0K127.0.0.1:6379> GET added_todos[31C
+"2"
+127.0.0.1:6379> [0K127.0.0.1:6379> S[17C[0K127.0.0.1:6379> SE[18C[0K127.0.0.1:6379> SET[19C[0K127.0.0.1:6379> SET [0;90;49mkey value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-millisecon[0m[20C[0K127.0.0.1:6379> SET a[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-millisec[0m[21C[0K127.0.0.1:6379> SET ad[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-millise[0m[22C[0K127.0.0.1:6379> SET add[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-millis[0m[23C[0K127.0.0.1:6379> SET adde[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milli[0m[24C[0K127.0.0.1:6379> SET added[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-mill[0m[25C[0K127.0.0.1:6379> SET added_[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-mil[0m[26C[0K127.0.0.1:6379> SET added_t[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-mi[0m[27C[0K127.0.0.1:6379> SET added_to[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-m[0m[28C[0K127.0.0.1:6379> SET added_tod[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-[0m[29C[0K127.0.0.1:6379> SET added_todo[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time[0m[30C[0K127.0.0.1:6379> SET added_todos[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-tim[0m[31C[0K127.0.0.1:6379> SET added_todos [0;90;49mvalue [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-mi[0m[32C[0K127.0.0.1:6379> SET added_todos 9[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-[0m[33C[0K127.0.0.1:6379> SET added_todos 90[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time[0m[34C[0K127.0.0.1:6379> SET added_todos 900[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-tim[0m[35C[0K127.0.0.1:6379> SET added_todos 9001[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-ti[0m[36C[0K127.0.0.1:6379> SET added_todos 9001[36C
+OK
+127.0.0.1:6379> [0K127.0.0.1:6379> G[17C[0K127.0.0.1:6379> GE[18C[0K127.0.0.1:6379> GET[19C[0K127.0.0.1:6379> GET [0;90;49mkey[0m[20C[0K127.0.0.1:6379> GET a[0;90;49m key[0m[21C[0K127.0.0.1:6379> GET ad[0;90;49m key[0m[22C[0K127.0.0.1:6379> GET add[0;90;49m key[0m[23C[0K127.0.0.1:6379> GET adde[0;90;49m key[0m[24C[0K127.0.0.1:6379> GET added[0;90;49m key[0m[25C[0K127.0.0.1:6379> GET added_[0;90;49m key[0m[26C[0K127.0.0.1:6379> GET added_t[0;90;49m key[0m[27C[0K127.0.0.1:6379> GET added_to[0;90;49m key[0m[28C[0K127.0.0.1:6379> GET added_tod[0;90;49m key[0m[29C[0K127.0.0.1:6379> GET added_todo[0;90;49m key[0m[30C[0K127.0.0.1:6379> GET added_todos[0;90;49m key[0m[31C[0K127.0.0.1:6379> GET added_todos[31C
+"9001"
+127.0.0.1:6379> [0K127.0.0.1:6379> D[17C[0K127.0.0.1:6379> DE[18C[0K127.0.0.1:6379> DEL[19C[0K127.0.0.1:6379> DELE[20C[0K127.0.0.1:6379> DELET[21C[0K127.0.0.1:6379> DELETE[22C[0K127.0.0.1:6379> DELETE [23C[0K127.0.0.1:6379> DELETE[22C[0K127.0.0.1:6379> DELET[21C[0K127.0.0.1:6379> DELE[20C[0K127.0.0.1:6379> DEL[19C[0K127.0.0.1:6379> DE[18C[0K127.0.0.1:6379> D[17C[0K127.0.0.1:6379> [16C[0K127.0.0.1:6379> R[17C[0K127.0.0.1:6379> RE[18C[0K127.0.0.1:6379> REM[19C[0K127.0.0.1:6379> REMO[20C[0K127.0.0.1:6379> REMOV[21C[0K127.0.0.1:6379> REMOVE[22C[0K127.0.0.1:6379> REMOV[21C[0K127.0.0.1:6379> REMO[20C[0K127.0.0.1:6379> REM[19C[0K127.0.0.1:6379> RE[18C[0K127.0.0.1:6379> R[17C[0K127.0.0.1:6379> [16C[0K127.0.0.1:6379> D[17C[0K127.0.0.1:6379> DE[18C[0K127.0.0.1:6379> DEL[19C[0K127.0.0.1:6379> DELE[20C[0K127.0.0.1:6379> DELET[21C[0K127.0.0.1:6379> DELETE[22C[0K127.0.0.1:6379> DELETE [23C[0K127.0.0.1:6379> DELETE a[24C[0K127.0.0.1:6379> DELETE ad[25C[0K127.0.0.1:6379> DELETE add[26C[0K127.0.0.1:6379> DELETE adde[27C[0K127.0.0.1:6379> DELETE added[28C[0K127.0.0.1:6379> DELETE added_[29C[0K127.0.0.1:6379> DELETE added_t[30C[0K127.0.0.1:6379> DELETE added_to[31C[0K127.0.0.1:6379> DELETE added_tod[32C[0K127.0.0.1:6379> DELETE added_todo[33C[0K127.0.0.1:6379> DELETE added_todos[34C[0K127.0.0.1:6379> DELETE added_todos[34C
+(error) ERR unknown command 'DELETE', with args beginning with: 'added_todos' 
+127.0.0.1:6379> [0K127.0.0.1:6379> D[17C[0K127.0.0.1:6379> DE[18C[0K127.0.0.1:6379> DEL[19C[0K127.0.0.1:6379> DEL [0;90;49mkey [key ...][0m[20C[0K127.0.0.1:6379> DEL a[0;90;49m key [key ...][0m[21C[0K127.0.0.1:6379> DEL ad[0;90;49m key [key ...][0m[22C[0K127.0.0.1:6379> DEL add[0;90;49m key [key ...][0m[23C[0K127.0.0.1:6379> DEL adde[0;90;49m key [key ...][0m[24C[0K127.0.0.1:6379> DEL added[0;90;49m key [key ...][0m[25C[0K127.0.0.1:6379> DEL added_[0;90;49m key [key ...][0m[26C[0K127.0.0.1:6379> DEL added_t[0;90;49m key [key ...][0m[27C[0K127.0.0.1:6379> DEL added_to[0;90;49m key [key ...][0m[28C[0K127.0.0.1:6379> DEL added_tod[0;90;49m key [key ...][0m[29C[0K127.0.0.1:6379> DEL added_todo[0;90;49m key [key ...][0m[30C[0K127.0.0.1:6379> DEL added_todos[0;90;49m key [key ...][0m[31C[0K127.0.0.1:6379> DEL added_todos[31C
+(integer) 1
+127.0.0.1:6379> [0K127.0.0.1:6379> G[17C[0K127.0.0.1:6379> GE[18C[0K127.0.0.1:6379> GET[19C[0K127.0.0.1:6379> GET [0;90;49mkey[0m[20C[0K127.0.0.1:6379> GET a[0;90;49m key[0m[21C[0K127.0.0.1:6379> GET ad[0;90;49m key[0m[22C[0K127.0.0.1:6379> GET add[0;90;49m key[0m[23C[0K127.0.0.1:6379> GET adde[0;90;49m key[0m[24C[0K127.0.0.1:6379> GET added[0;90;49m key[0m[25C[0K127.0.0.1:6379> GET added_[0;90;49m key[0m[26C[0K127.0.0.1:6379> GET added_t[0;90;49m key[0m[27C[0K127.0.0.1:6379> GET added_to[0;90;49m key[0m[28C[0K127.0.0.1:6379> GET added_tod[0;90;49m key[0m[29C[0K127.0.0.1:6379> GET added_todo[0;90;49m key[0m[30C[0K127.0.0.1:6379> GET added_todos[0;90;49m key[0m[31C[0K127.0.0.1:6379> GET added_todos[31C
+(nil)
+127.0.0.1:6379> [0K127.0.0.1:6379> e[17C[0K127.0.0.1:6379> ex[18C[0K127.0.0.1:6379> exi[19C[0K127.0.0.1:6379> exit[20C[0K127.0.0.1:6379> exit[20C
+[?2004hroot@9dfa8a02fe81:/data# exit
+[?2004lexit
+]0;ubuntu@DESKTOP-EPCMUMJ: ~/fullstackopen-part12-exercises/todo-app[01;32mubuntu@DESKTOP-EPCMUMJ[00m:[01;34m~/fullstackopen-part12-exercises/todo-app[00m$ exit
+exit
+
+Script done on 2024-01-07 16:29:22+01:00 [COMMAND_EXIT_CODE="0"]
