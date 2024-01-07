@@ -1,20 +1,61 @@
 version: '3.8'
 
 services:
-  frontend:
+  nginx:
+    image: nginx:latest
+    volumes: 
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - "todo-frontend"
+      - "todo-backend"
+    ports:
+      - 8081:80
+    container_name: reverse-proxy
+  todo-frontend:
+    image: todo-frontend-dev
     build:
-      context: ./todo-frontend
+      context: ./todo-frontend/
       dockerfile: Dockerfile.dev
     volumes:
       - ./todo-frontend/:/usr/src/app
-  nginx:
-    image: nginx:1.20.1
+    environment:
+      - REACT_APP_BACKEND_URL=api/
+      - CHOKIDAR_USEPOLLING=true
+  todo-backend:
+    image: todo-backend-dev
+    build:
+      context: ./todo-backend/
+      dockerfile: Dockerfile.dev
     volumes:
-      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+      - ./todo-backend:/usr/src/app
     ports:
-      - 8085:80
-    container_name: reverse-proxy
+      - 3001:3001
     depends_on:
-      - frontend 
+      - "mongo"
+      - "redis"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
+      - CHOKIDAR_USEPOLLING=true
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes:       
+      - ./todo-backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - mongo_data:/data/db
+  redis:
+    image: redis
+    command: ['redis-server']
+    volumes: 
+      - reddis_data:/data
+
+volumes:
+  mongo_data:
+  reddis_data:
+
+
 
 
